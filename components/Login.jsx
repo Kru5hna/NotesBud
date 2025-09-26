@@ -32,11 +32,13 @@ export const Login = () => {
                 <footer>
                     <a target="_blank" href="https://github.com/Kru5hna">
                         <img alt="pfp" src="https://avatars.githubusercontent.com/u/77163783?v=4" />
-                        <h6>@jamezmca</h6>
+                        <h6>@Kru5hna</h6>
                         <i className="fa-brands fa-github"></i>
                     </a>
                 </footer>
             </div>
+
+            
         </>
    )
 }

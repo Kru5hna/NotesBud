@@ -36,20 +36,21 @@
   z-index: -1;
 }
 
-.login-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-}
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+  }
 
-.login-container input {
-  width: 100%;
-  max-width: unset;
-  padding: 0.75rem;
-}
+  .login-container input {
+    width: 100%;
+    max-width: unset;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
 
 .submit-btn {
   width: 100%;
@@ -242,6 +243,7 @@ article>div {
   background: var(--color-link-transparent);
   width: 100%;
 }
+
 
 /* MEDIA QUERIES */
 
