@@ -1,14 +1,15 @@
+'use client'
 import Editor from "@/components/Editor";
 import SideNav from "@/components/SideNav";
 import Viewer from "@/components/Viewer";
 
 export default function NotesPage() {
-   const isViewer = false 
+   const isViewer = true
   return (
     <main className="notes">
-      {/* <SideNav /> */}
+      <SideNav />
      {!isViewer && ( <Editor isViewer={isViewer} />) }
-      {isViewer && (<Viewer />)}
+      {isViewer && ( <Viewer />)}
     </main>
   );
 }

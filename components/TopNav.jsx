@@ -4,7 +4,7 @@ export default function TopNav(props) {
     <>
     
     <div className="notes-btn">
-      <button className="card-button-primary ">
+      <button className="card-button-primary menu">
         <i className="fa-solid fa-bars"></i>
       </button>
 
