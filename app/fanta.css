@@ -662,6 +662,8 @@ details[open] summary {
     color: var(--background-primary);
     background: var(--color-link);
 }
+.card-button-primary i {
+}
 
 .card-button-secondary {
     color: var(--color-link);
