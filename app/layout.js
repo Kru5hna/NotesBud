@@ -1,5 +1,6 @@
 import "./global.css";
 import './fanta.css'
+import Head from "./head";
 
 // import Head from "./head";
 // import AuthProvider from "@/context/AuthContext";
@@ -18,7 +19,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" >
-      {/* <Head /> */}
+      <Head />
       {/* <AuthProvider> */}
         <body >
           <div id="app">{children}</div>

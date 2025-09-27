@@ -284,6 +284,9 @@ li {
 a {
     color: var(--color-link);
 }
+a i {
+    color: white;
+}
 
 a:active,
 a:focus,

@@ -87,7 +87,7 @@ footer a {
   gap: 0.5rem;
   padding: 0.5rem;
   padding-right: 0.75rem;
-  background: var(--background-muted);
+  /* background: var(--background-muted); */
   border: 1px solid transparent;
   transition-duration: 200ms;
   text-decoration: none;
@@ -98,6 +98,7 @@ footer a:hover {
 }
 
 footer a img {
+  background-color: transparent;
   max-width: 30px;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
@@ -242,6 +243,7 @@ article>div {
   background: var(--color-link-transparent);
   width: 100%;
 }
+
 
 /* MEDIA QUERIES */
 
