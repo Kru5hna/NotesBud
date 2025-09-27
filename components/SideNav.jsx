@@ -1,10 +1,16 @@
-export default function SideNav() {
+import { useState } from "react";
 
-   const notes = ['hello','world'];
-   const showNav = true
+export default function SideNav(props) {
+    const {showNav, setShowNav} = props;
+    const notes = ['hello','world','hello','world','hello','world','hello','world','hello','world','hello','world','hello','world'];
+//    const showNav = false
+   
 
    return (
       <section className={"nav " + (showNav ? '' : ' hidden-nav ')}>
+        <button className="close-btn" onClick={() => setShowNav(false)}>
+        <i className="fa-solid fa-xmark"></i>
+      </button>
             <h1 className="text-gradient">NotesBud</h1>
             <h6>Easy Breezy Notes</h6>
             <div className="full-line"></div>

@@ -136,21 +136,23 @@ footer a img {
 }
 
 .nav {
-  border-right: 1px solid var(--border-primary);
-  flex-direction: column;
-  display: flex;
-  gap: 1rem;
-  height: 100vh;
-  overflow: hidden;
   position: fixed;
   top: 0;
+  left: 0;
+  height: 100vh;
   max-width: 65%;
   background: var(--background-primary);
+  border-right: 1px solid var(--border-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   z-index: 10;
+  transition: transform 0.3s ease;
+  transform: translateX(0);
 }
 
 .hidden-nav {
-  display: none !important;
+  transform: translateX(-100%); /* slide out instead of display:none */
 }
 
 .nav button {
@@ -260,47 +262,42 @@ article>div {
 }
 
 @media (min-width: 768px) {
-
   #notes {
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     flex: 1;
   }
 
   .nav {
     position: sticky;
-    /* position: relative; */
-    max-width: unset;
+    top: 0;
+    height: 100vh;
+    max-width: 26% !important;
+    /* max-width: unset; */
+    transform: translateX(0) !important; 
   }
 
   .hidden-nav {
     display: flex !important;
+    transform: translateX(0) !important; 
   }
 
   .menu {
-    display: none !important;
-  }
+    display: none !important; 
 
   .notes-container,
   .mdx-container {
     grid-column: span 2;
   }
 }
-
+}
 @media (min-width: 1024px) {
-  #hero {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .hero-img {
-    grid-column: span 2 / span 2;
-  }
-
   #notes {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: 250px 1fr 1fr 1fr;
   }
 
   .notes-container,
   .mdx-container {
-    grid-column: span 3;
+    grid-column: span 3; /* editor/viewer take 3 cols */
   }
 }
