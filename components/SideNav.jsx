@@ -5,7 +5,7 @@ export default function SideNav() {
 
    return (
       <section className={"nav " + (showNav ? '' : ' hidden-nav ')}>
-            <h1 className="text-gradient">MDNOTES</h1>
+            <h1 className="text-gradient">NotesBud</h1>
             <h6>Easy Breezy Notes</h6>
             <div className="full-line"></div>
             <button>

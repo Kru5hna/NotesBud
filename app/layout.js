@@ -10,7 +10,7 @@ export const metadata = {
   title: "NotesBud | Easy Breezy Notetaking",
   description: "A creative space to capture, organize, and bring your notes to life.",
   icons: {
-    icon: "/logo.jpg", // path from public folder
+    icon: "/logo2.png", 
   },
 };
 
