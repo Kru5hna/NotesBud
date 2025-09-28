@@ -146,10 +146,15 @@ footer a img {
   max-width: 65%;
   background: var(--background-primary);
   z-index: 10;
+/* 
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out; */
 }
 
 .hidden-nav {
   display: none !important;
+    /* transform: translateX(-120%); */
+
 }
 
 .nav button {
@@ -279,7 +284,7 @@ article>div {
 
   .notes-container,
   .mdx-container {
-    grid-column: span 4;
+    grid-column: span 2;
   }
 }
 

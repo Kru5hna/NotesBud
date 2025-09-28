@@ -1,5 +1,5 @@
 export default function TopNav(props) {
-    const { hello, isViewer, handleToggleViewer, handleToggleMenu, savingNote
+    const { isViewer, handleToggleViewer, handleToggleMenu, savingNote
         , handleSaveNote } = props
 
     return (

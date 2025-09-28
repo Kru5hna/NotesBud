@@ -34,7 +34,7 @@ export default function Login() {
             router.push('/notes')
         } catch (err) {
             console.log(err.message)
-            // challenge for you - add an error state that is conditionally rendered if there is an error and shows the error message
+            
         } finally {
             setIsAuthenticating(false)
         }
@@ -75,9 +75,9 @@ export default function Login() {
                 </div>
                 <div className="full-line"></div>
                 <footer>
-                    <a target="_blank" href="https://github.com/jamezmca/nextjs-15-course">
-                        <img alt="pfp" src="https://avatars.githubusercontent.com/u/77163783?v=4" />
-                        <h6>@jamezmca</h6>
+                    <a target="_blank" href="https://github.com/Kru5hna">
+                        <img alt="pfp" src="https://avatars.githubusercontent.com/u/139316875?v=4" />
+                        <h6>@Kru5hna</h6>
                         <i className="fa-brands fa-github"></i>
                     </a>
                 </footer>

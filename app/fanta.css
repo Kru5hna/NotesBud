@@ -284,9 +284,6 @@ li {
 a {
     color: var(--color-link);
 }
-a i {
-    color: white;
-}
 
 a:active,
 a:focus,
@@ -661,8 +658,6 @@ details[open] summary {
 .card-button-primary {
     color: var(--background-primary);
     background: var(--color-link);
-}
-.card-button-primary i {
 }
 
 .card-button-secondary {

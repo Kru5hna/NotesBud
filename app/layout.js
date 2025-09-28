@@ -1,4 +1,4 @@
-import "./global.css";
+import "./globals.css";
 import './fanta.css'
 import Head from "./head";
 import AuthProvider from "@/context/AuthContext";
@@ -28,5 +28,3 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
-
-// K:\COHORT\Projects\notesbud\public\fonts\e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2
