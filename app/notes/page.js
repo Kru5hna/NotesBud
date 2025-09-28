@@ -5,24 +5,48 @@ import Viewer from "@/components/Viewer";
 import { useState } from "react";
 
 export default function NotesPage() {
-   const [isViewer, setIsViewer] = useState(true);
+   const [isViewer, setIsViewer] = useState(true)
+    // const [text, setText] = useState('')
+    const [showNav, setShowNav] = useState(false)
+    const [note, setNote] = useState({
+        content: ''
+    })
 
-   const [showNav, setShowNav] = useState(true);
+   const [isLoading, setIsLoading] = useState(false)
+    const [noteIds, setNoteIds] = useState([])
+    const [savingNote, setSavingNote] = useState(false)
 
-   function handleShowNav() {
-    // console.log('here');
-    
-   setShowNav(!showNav); 
-  }
+    function handleToggleViewer() {
+        // isViewer = !isViewer
+        setIsViewer(!isViewer)
+    }
 
-   function handleToggleViewer() {
-    setIsViewer(!isViewer);
-   }
+    function handleToggleMenu() {
+        setShowNav(!showNav)
+    }
+
+    function handleCreateNote() {
+        // create a new note
+        setNote({
+            content: ''
+        })
+        setIsViewer(false)
+        window.history.replaceState(null, '', '/notes')
+    }
+
+    function handleEditNote(e) {
+        // edit an existing note
+        setNote({ ...note, content: e.target.value })
+    }
   return (
     <main className="notes">
-      <SideNav handleShowNav={handleShowNav} showNav={showNav} setShowNav={setShowNav} />
-     {!isViewer && ( <Editor isViewer={isViewer} handleToggleViewer={handleToggleViewer} handleShowNav={handleShowNav} />) }
-      {isViewer && ( <Viewer isViewer={isViewer} handleToggleViewer={handleToggleViewer} handleShowNav={handleShowNav}  />)}
+     <SideNav setIsViewer={setIsViewer}  noteIds={noteIds} setNoteIds={setNoteIds} showNav={showNav} setShowNav={setShowNav} />
+            {!isViewer && (
+                <Editor savingNote={savingNote} handleToggleMenu={handleToggleMenu} setText={handleEditNote} text={note.content} hello="world" isViewer={isViewer} handleToggleViewer={handleToggleViewer} />
+            )}
+            {isViewer && (
+                <Viewer savingNote={savingNote}  handleToggleMenu={handleToggleMenu} text={note.content} isViewer={isViewer} handleToggleViewer={handleToggleViewer} />
+            )}
     </main>
   );
 }

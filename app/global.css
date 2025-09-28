@@ -5,13 +5,14 @@
   min-height: 100vh;
 }
 
-/* HERO  */
+
+/* HERO  */
 #hero {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-#hero > div {
+#hero>div {
   padding: 2rem;
 }
 
@@ -56,7 +57,14 @@
   display: grid;
   place-items: center;
   padding: 0.5rem;
+  /* Apply transition to all buttons */
+  transition: all 200ms ease-in-out;
 }
+/* Subtle interaction feedback */
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
 
 .secondary-btns-container {
   display: grid;
@@ -70,6 +78,12 @@
   cursor: pointer;
   width: 100%;
   max-width: unset;
+  /* Apply transition to all buttons */
+  transition: all 200ms ease-in-out;
+}
+/* Subtle interaction feedback */
+.secondary-btns-container button:active {
+    transform: scale(0.98);
 }
 
 footer {
@@ -86,9 +100,10 @@ footer a {
   gap: 0.5rem;
   padding: 0.5rem;
   padding-right: 0.75rem;
-  /* background: var(--background-muted); */
+  background: var(--background-muted);
   border: 1px solid transparent;
-  transition-duration: 200ms;
+  /* Apply transition to all properties being changed */
+  transition: all 200ms ease-in-out; 
   text-decoration: none;
 }
 
@@ -97,18 +112,20 @@ footer a:hover {
 }
 
 footer a img {
-  background-color: transparent;
   max-width: 30px;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
 }
 
 /* DASHBOARD */
-
 #notes {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr; /* stacked by default on mobile */
-  height: 100vh;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  flex: 1;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .nav,
@@ -129,32 +146,27 @@ footer a img {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  transition: all 200ms ease-in-out;
 }
 
-/* Mobile Nav (Fixed + Slide Transition) */
 .nav {
-  position: fixed; /* slide-in on mobile */
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 80%; /* mobile sidebar width */
-  max-width: 300px;
-  background: var(--background-primary);
   border-right: 1px solid var(--border-primary);
-  display: flex;
   flex-direction: column;
+  display: flex;
   gap: 1rem;
-  z-index: 50;
-  transition: transform 0.3s ease;
-  transform: translateX(-100%); /* hidden by default */
-  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  max-width: 65%;
+  background: var(--background-primary);
+  z-index: 10;
+  /* Add a transition for potential sliding effects if not hidden via display:none */
+  transition: transform 300ms ease-in-out;
 }
 
-.nav.active {
-  transform: translateX(0); /* shown when toggled */
-}
 .hidden-nav {
-  transform: translateX(-100%); /* Slides nav off-screen */
+  display: none !important;
 }
 
 .nav button {
@@ -164,6 +176,7 @@ footer a img {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  transition: background-color 150ms ease-in-out;
 }
 
 .nav .notes-list {
@@ -174,7 +187,6 @@ footer a img {
   overflow-y: auto;
 }
 
-/* SHINY EFFECT: Notes List Buttons (Hover Border) */
 .notes-list button {
   display: flex;
   flex-direction: column;
@@ -184,19 +196,7 @@ footer a img {
   overflow: hidden;
   padding: 0.5rem;
   min-height: fit-content;
-
-  border-left: 3px solid transparent; /* Base state */
-  transition: all 0.2s;
-}
-
-.notes-list button:hover {
-  background: var(--background-tertiary); /* Highlight background on hover */
-}
-
-/* Add this class to the currently active/selected note item in your JSX */
-.notes-list button.active {
-  border-left: 3px solid var(--color-link); /* Active glow border */
-  background: var(--background-tertiary);
+  transition: background-color 150ms ease-in-out;
 }
 
 .notes-list button p {
@@ -218,12 +218,15 @@ footer a img {
   transform: translateY(-50%);
   opacity: 0;
   pointer-events: none;
-  transition-duration: 200ms;
+  /* Explicitly transition opacity, color, and transform (including translate) */
+  transition: opacity 200ms ease-in-out, color 200ms ease-in-out, transform 200ms ease-in-out;
 }
 
 .list-btn:hover .delete-btn {
   opacity: 1;
   pointer-events: all;
+  /* Move the delete button slightly to the left on hover */
+  transform: translateY(-50%) translateX(-4px); 
 }
 
 .list-btn:hover .delete-btn:hover {
@@ -245,71 +248,57 @@ footer a img {
   border: none;
   resize: none;
   background: none;
-  color: var(--color-primary);
 }
 
-article > div {
+article>div {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   flex: 1;
 }
 
-/* ----------------------------------------------------------------------------------- */
+
+/* UTILITY */
+.full-line {
+  height: 1px;
+  background: var(--color-link-transparent);
+  width: 100%;
+}
+
 /* MEDIA QUERIES */
-/* ----------------------------------------------------------------------------------- */
 
 @media (min-width: 640px) {
-  #notes {
-    grid-template-columns: 250px 1fr; /* sidebar + editor */
+  #hero {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    flex: 1;
   }
 
-  .nav {
+  .hero-img {
     position: sticky;
-    transform: translateX(0);
-    top: 0;
-    height: 100vh;
-  }
-
-  .notes-container,
-  .mdx-container {
-    grid-column: 2 / -1; /* content starts after sidebar */
+    max-height: 100vh;
   }
 }
 
 @media (min-width: 768px) {
   #notes {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    flex: 1;
+    grid-template-columns: 250px 1fr 1fr; /* sidenav fixed width + 2 cols for editor/viewer */
   }
 
   .nav {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    /* max-width: 26% !important; */
-    /* max-width: unset; */
-    transform: translateX(0) !important; 
+    position: relative;  /* ← resets fixed */
+    width: 250px;        /* ← fixed width */
+    height: 100vh;       
+    z-index: auto;       /* ← no overlay */
+    transform: none;     /* ← cancel mobile slide */
   }
 
   .hidden-nav {
-    display: flex !important;
-    transform: translateX(0) !important; 
-  }
-
-  .menu {
-    display: none !important; 
-
-  .notes-container,
-  .mdx-container {
-    grid-column: span 2;
-    
+    display: flex !important; /* sidenav is always visible on desktop */
   }
 }
-}
 
-/* Desktop / Large screens */
+
 @media (min-width: 1024px) {
   #hero {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -320,12 +309,11 @@ article > div {
   }
 
   #notes {
-    grid-template-columns: 250px 1fr; /* sidebar + editor */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .notes-container,
   .mdx-container {
-    grid-column: 2 / -1;
-    padding: 2rem; /* extra spacing on desktop */
+    grid-column: span 3;
   }
 }
