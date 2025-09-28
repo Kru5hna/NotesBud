@@ -48,6 +48,7 @@ export default function SideNav(props) {
             try {
                 const notesRef = collection(db, 'users', currentUser.uid, 'notes')
                 const snapshot = await getDocs(notesRef)
+                console.log('here-')
                 const notesIndexes = snapshot.docs.map((doc) => {
                     return doc.id
                 })

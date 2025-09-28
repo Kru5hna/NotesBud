@@ -108,7 +108,7 @@ export default function NotesPage() {
 
     if (isLoadingUser) {
         return (
-            <h6 className="text-gradient">Loading...</h6>
+            <h6 className="text-gradient ">Loading...</h6>
         )
     }
 

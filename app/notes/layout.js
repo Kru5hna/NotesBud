@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 export default function NoteLayout(props) {
   const { children } = props;
   return (
