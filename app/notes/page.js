@@ -23,8 +23,10 @@ export default function NotesPage() {
         return(
             <h6 className="text-gradient">Loading...</h6>
         )
-    } else {
-        window.location.href= '/'
+    } 
+    if (!currentUser) {
+        // if no user found, then boot them to the home page cause this is the notes page (for auth users only)
+        window.location.href = '/'
     }
 
     function handleToggleViewer() {
