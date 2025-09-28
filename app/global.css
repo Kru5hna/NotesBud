@@ -5,14 +5,13 @@
   min-height: 100vh;
 }
 
-
 /* HERO  */
 #hero {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-#hero>div {
+#hero > div {
   padding: 2rem;
 }
 
@@ -105,14 +104,11 @@ footer a img {
 }
 
 /* DASHBOARD */
+
 #notes {
-  position: relative;
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  flex: 1;
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
+  grid-template-columns: 1fr; /* stacked by default on mobile */
+  height: 100vh;
 }
 
 .nav,
@@ -135,24 +131,30 @@ footer a img {
   gap: 1rem;
 }
 
+/* Mobile Nav (Fixed + Slide Transition) */
 .nav {
-  position: fixed;
+  position: fixed; /* slide-in on mobile */
   top: 0;
   left: 0;
   height: 100vh;
-  max-width: 65%;
+  width: 80%; /* mobile sidebar width */
+  max-width: 300px;
   background: var(--background-primary);
   border-right: 1px solid var(--border-primary);
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  z-index: 10;
+  z-index: 50;
   transition: transform 0.3s ease;
-  transform: translateX(0);
+  transform: translateX(-100%); /* hidden by default */
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
 }
 
+.nav.active {
+  transform: translateX(0); /* shown when toggled */
+}
 .hidden-nav {
-  transform: translateX(-100%); /* slide out instead of display:none */
+  transform: translateX(-100%); /* Slides nav off-screen */
 }
 
 .nav button {
@@ -172,6 +174,7 @@ footer a img {
   overflow-y: auto;
 }
 
+/* SHINY EFFECT: Notes List Buttons (Hover Border) */
 .notes-list button {
   display: flex;
   flex-direction: column;
@@ -181,6 +184,19 @@ footer a img {
   overflow: hidden;
   padding: 0.5rem;
   min-height: fit-content;
+
+  border-left: 3px solid transparent; /* Base state */
+  transition: all 0.2s;
+}
+
+.notes-list button:hover {
+  background: var(--background-tertiary); /* Highlight background on hover */
+}
+
+/* Add this class to the currently active/selected note item in your JSX */
+.notes-list button.active {
+  border-left: 3px solid var(--color-link); /* Active glow border */
+  background: var(--background-tertiary);
 }
 
 .notes-list button p {
@@ -229,35 +245,35 @@ footer a img {
   border: none;
   resize: none;
   background: none;
+  color: var(--color-primary);
 }
 
-article>div {
+article > div {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   flex: 1;
 }
 
-
-/* UTILITY */
-.full-line {
-  height: 1px;
-  background: var(--color-link-transparent);
-  width: 100%;
-}
-
-
+/* ----------------------------------------------------------------------------------- */
 /* MEDIA QUERIES */
+/* ----------------------------------------------------------------------------------- */
 
 @media (min-width: 640px) {
-  #hero {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    flex: 1;
+  #notes {
+    grid-template-columns: 250px 1fr; /* sidebar + editor */
   }
 
-  .hero-img {
+  .nav {
     position: sticky;
-    max-height: 100vh;
+    transform: translateX(0);
+    top: 0;
+    height: 100vh;
+  }
+
+  .notes-container,
+  .mdx-container {
+    grid-column: 2 / -1; /* content starts after sidebar */
   }
 }
 
@@ -272,7 +288,7 @@ article>div {
     position: sticky;
     top: 0;
     height: 100vh;
-    max-width: 26% !important;
+    /* max-width: 26% !important; */
     /* max-width: unset; */
     transform: translateX(0) !important; 
   }
@@ -288,16 +304,28 @@ article>div {
   .notes-container,
   .mdx-container {
     grid-column: span 2;
+    
   }
 }
 }
+
+/* Desktop / Large screens */
 @media (min-width: 1024px) {
+  #hero {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero-img {
+    grid-column: span 2 / span 2;
+  }
+
   #notes {
-    grid-template-columns: 250px 1fr 1fr 1fr;
+    grid-template-columns: 250px 1fr; /* sidebar + editor */
   }
 
   .notes-container,
   .mdx-container {
-    grid-column: span 3; /* editor/viewer take 3 cols */
+    grid-column: 2 / -1;
+    padding: 2rem; /* extra spacing on desktop */
   }
 }
