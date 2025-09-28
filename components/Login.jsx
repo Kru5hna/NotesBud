@@ -10,7 +10,7 @@ export default function Login() {
     const [isRegister, setIsRegister] = useState(false)
     const [isAuthenticating, setIsAuthenticating] = useState(false)
 
-    const { login, signup } = useAuth()
+    const { login, signup, resetPasswordEmail } = useAuth()
     const router = useRouter()
 
     const cantAuth = !email.includes('@') || password.length < 6
@@ -69,7 +69,7 @@ export default function Login() {
                     }} className="card-button-secondary">
                         <small>{isRegister ? 'Log in' : 'Sign up'}</small>
                     </button>
-                    <button className="card-button-secondary">
+                    <button onClick={() => {resetPasswordEmail(email)}} className="card-button-secondary">
                         <small>Forgot password?</small>
                     </button>
                 </div>

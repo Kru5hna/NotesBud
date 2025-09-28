@@ -1,7 +1,7 @@
 'use client'
 
 import { auth } from "@/firebase"
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { createContext, useContext, useEffect, useState } from "react"
 
 const AuthContext = createContext()
@@ -28,6 +28,9 @@ export default function AuthProvider(props) {
         return signOut(auth)
     }
 
+    function resetPasswordEmail() {
+        sendPasswordResetEmail(auth, email);
+    }
     // resetpasswordemail
     // sendPasswordResetEmail(auth, email)
 
@@ -60,7 +63,8 @@ export default function AuthProvider(props) {
         isLoadingUser,
         signup,
         login,
-        logout
+        logout,
+        resetPasswordEmail
     }
 
     return (
