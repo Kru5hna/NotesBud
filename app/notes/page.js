@@ -2,6 +2,7 @@
 import Editor from "@/components/Editor";
 import SideNav from "@/components/SideNav";
 import Viewer from "@/components/Viewer";
+import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
 
 export default function NotesPage() {
@@ -14,7 +15,17 @@ export default function NotesPage() {
 
    const [isLoading, setIsLoading] = useState(false)
     const [noteIds, setNoteIds] = useState([])
-    const [savingNote, setSavingNote] = useState(false)
+    const [savingNote, setSavingNote] = useState(false);
+
+    const {currentUser, isLoadingUser} = useAuth();
+    
+    if(isLoadingUser) {
+        return(
+            <h6 className="text-gradient">Loading...</h6>
+        )
+    } else {
+        window.location.href= '/'
+    }
 
     function handleToggleViewer() {
         // isViewer = !isViewer
