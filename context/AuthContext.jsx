@@ -28,9 +28,15 @@ export default function AuthProvider(props) {
         return signOut(auth)
     }
 
-    function resetPasswordEmail() {
-        sendPasswordResetEmail(auth, email);
+    // reset password
+  async function resetPasswordEmail(email) {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      console.log("Password reset email sent!");
+    } catch (error) {
+      console.error("Error resetting password:", error.message);
     }
+  }
     // resetpasswordemail
     // sendPasswordResetEmail(auth, email)
 

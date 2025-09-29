@@ -87,7 +87,7 @@ footer a {
   gap: 0.5rem;
   padding: 0.5rem;
   padding-right: 0.75rem;
-  background: var(--background-muted);
+  /* background: var(--background-muted); */
   border: 1px solid transparent;
   transition-duration: 200ms;
   text-decoration: none;
@@ -101,6 +101,11 @@ footer a img {
   max-width: 30px;
   aspect-ratio: 1 / 1;
   border-radius: 100%;
+}
+
+footer a i {
+  /* background-color: transparent !important; */
+  color: white;
 }
 
 /* DASHBOARD */

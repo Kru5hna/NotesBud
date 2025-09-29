@@ -48,7 +48,7 @@ export default function SideNav(props) {
             try {
                 const notesRef = collection(db, 'users', currentUser.uid, 'notes')
                 const snapshot = await getDocs(notesRef)
-                console.log('here-')
+                // console.log('here-')
                 const notesIndexes = snapshot.docs.map((doc) => {
                     return doc.id
                 })
@@ -71,16 +71,16 @@ export default function SideNav(props) {
             </button>
             <div className="notes-list">
                 {noteIds.length == 0 ?
-                    <p>You have 0 notes</p> :
+                    <h6 className="text-gradient">Let's Create your first Note</h6> :
                     noteIds.map((note, idx) => {
                         const [n, d] = note.split('__')
                         const date = (new Date(parseInt(d))).toString()
 
                         return (
-                            <button onClick={() => {
+                           <button onClick={() => {
                                 router.push('/notes?id=' + note)
                                 setIsViewer(true)
-                            }} key={idx} className={"card-button-secondary +  list-btn"}>
+                            }} key={idx} className="card-button-secondary list-btn">
                                 <p>{n}</p>
                                 <small>{date.split(' ').slice(1, 4).join(' ')}</small>
                                 <div onClick={(e) => {
